@@ -70,7 +70,7 @@ public interface CacheInterface<T> {
     Map<String, T> getMultiple(Collection<String> keys);
 
     /**
-     * Persisting a set of key => value pairs in the cache, with an optional TTL.
+     * Persisting a set of key => value pairs in the cache, with an TTL.
      *
      * @param items A map of key => value pairs for a multiple-set operation.
      * @param ttl   The amount of seconds from the current time that the item will exist in the cache for.
@@ -81,7 +81,7 @@ public interface CacheInterface<T> {
     boolean setMultiple(Map<String, T> items, int ttl);
 
     /**
-     * Persisting a set of key => value pairs in the cache, with an optional TTL.
+     * Persisting a set of key => value pairs in the cache.
      *
      * @param items A map of key => value pairs for a multiple-set operation.
      *
