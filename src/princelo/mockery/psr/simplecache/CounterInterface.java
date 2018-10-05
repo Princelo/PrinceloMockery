@@ -1,7 +1,6 @@
 package princelo.mockery.psr.simplecache;
 
-public interface CounterInterface
-{
+public interface CounterInterface {
     /**
      * Increment a value atomically in the cache
      *
