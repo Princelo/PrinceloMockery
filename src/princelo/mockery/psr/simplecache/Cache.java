@@ -3,7 +3,7 @@ package princelo.mockery.psr.simplecache;
 import java.util.Collection;
 import java.util.Map;
 
-public interface CacheInterface<T> {
+public interface Cache<T> {
     int TTL_MINUTE = 60;
     int TTL_HOUR = 3600;
     int TTL_DAY = 86400;
@@ -12,7 +12,6 @@ public interface CacheInterface<T> {
      * Fetch a value from the cache.
      *
      * @param key The unique key of this item in the cache
-     *
      * @return mixed The value of the item from the cache, or null in case of cache miss
      */
     T get(String key);
@@ -20,11 +19,10 @@ public interface CacheInterface<T> {
     /**
      * Persist data in the cache, uniquely referenced by a key with an expiration TTL time.
      *
-     * @param key The key of the item to store
+     * @param key   The key of the item to store
      * @param value The value of the item to store
-     * @param ttl The TTL value of this item. If no value is sent and the driver supports TTL
-     *                                       then the library may set a default value for it or let the driver take care of that.
-     *
+     * @param ttl   The TTL value of this item. If no value is sent and the driver supports TTL
+     *              then the library may set a default value for it or let the driver take care of that.
      * @return bool True on success and false on failure
      */
     boolean set(String key, T value, int ttl);
@@ -32,9 +30,8 @@ public interface CacheInterface<T> {
     /**
      * Persist data in the cache, uniquely referenced by a key.
      *
-     * @param key The key of the item to store
+     * @param key   The key of the item to store
      * @param value The value of the item to store
-     *
      * @return True on success and false on failure
      */
     boolean set(String key, T value);
@@ -55,16 +52,14 @@ public interface CacheInterface<T> {
      * Obtain multiple cache items by their unique keys
      *
      * @param keys A list of keys that can obtained in a single operation.
-     *
      * @return a map of key => value pairs. Cache keys that do not exist or are stale will have a value of null.
      */
-     Map<String, T> getMultiple(String[] keys);
+    Map<String, T> getMultiple(String[] keys);
 
     /**
      * Obtain multiple cache items by their unique keys
      *
      * @param keys A list of keys that can obtained in a single operation.
-     *
      * @return a map of key => value pairs. Cache keys that do not exist or are stale will have a value of null.
      */
     Map<String, T> getMultiple(Collection<String> keys);
@@ -74,8 +69,7 @@ public interface CacheInterface<T> {
      *
      * @param items A map of key => value pairs for a multiple-set operation.
      * @param ttl   The amount of seconds from the current time that the item will exist in the cache for.
-     *                                     If this is null then the cache backend will fall back to its own default behaviour.
-     *
+     *              If this is null then the cache backend will fall back to its own default behaviour.
      * @return bool True on success and false on failure
      */
     boolean setMultiple(Map<String, T> items, int ttl);
@@ -84,7 +78,6 @@ public interface CacheInterface<T> {
      * Persisting a set of key => value pairs in the cache.
      *
      * @param items A map of key => value pairs for a multiple-set operation.
-     *
      * @return bool True on success and false on failure
      */
     boolean setMultiple(Map<String, T> items);
@@ -111,7 +104,6 @@ public interface CacheInterface<T> {
      * another script can remove it making the state of your app out of date.
      *
      * @param key The cache item key
-     *
      * @return True if exists else false
      */
     boolean exists(String key);
